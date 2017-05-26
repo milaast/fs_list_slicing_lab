@@ -62,7 +62,7 @@ def custom_append(input_list, value):
 
     """
 
-    pass
+    input_list[len(input_list):] = [value]
 
 
 def custom_extend(input_list, second_list):
@@ -81,7 +81,7 @@ def custom_extend(input_list, second_list):
 
     """
 
-    pass
+    input_list[len(input_list):] = second_list
 
 
 def custom_insert(input_list, index, value):
@@ -99,7 +99,7 @@ def custom_insert(input_list, index, value):
 
     """
 
-    pass
+    input_list[index:index] = [value]
 
 
 def custom_remove(input_list, value):
@@ -118,7 +118,10 @@ def custom_remove(input_list, value):
 
     """
 
-    pass
+    for i in range(len(input_list)):
+        if input_list[i] == value:
+            del input_list[i]
+            break        
 
 
 def custom_pop(input_list):
@@ -136,8 +139,9 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
-
-    return None
+    popped = input_list[-1]
+    del input_list[-1]
+    return popped
 
 
 def custom_index(input_list, value):
@@ -153,7 +157,11 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
+    value_index = -1
+    for item in input_list:
+        value_index += 1
+        if item == value:
+            return value_index
 
 
 def custom_count(input_list, value):
@@ -169,7 +177,11 @@ def custom_count(input_list, value):
 
     """
 
-    return 0
+    value_count = 0
+    for item in input_list:
+        if item == value:
+            value_count += 1
+    return value_count
 
 
 def custom_reverse(input_list):
@@ -188,8 +200,8 @@ def custom_reverse(input_list):
 
     """
 
-    pass
-
+    input_list = input_list[::-1]
+    #still showing on errors on terminal
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
@@ -208,7 +220,16 @@ def custom_contains(input_list, value):
 
     """
 
-    return None
+    for item in input_list:
+        if item == value:
+            return True
+        elif item != value:
+            continue
+        else:
+            return False
+
+        #need to return false.
+
 
 
 def custom_equality(some_list, another_list):
@@ -227,7 +248,15 @@ def custom_equality(some_list, another_list):
 
     """
 
-    return None
+    if len(some_list) == len(another_list):
+        for i in range(len(some_list)):
+            if some_list[i] == another_list[i]:
+                continue
+            else:
+                return False
+                #need to return true if lists are equal
+    else:
+        return False
 
 
 ##############################################################################
